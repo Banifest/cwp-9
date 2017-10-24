@@ -96,15 +96,15 @@ Promise.props({
     );
 */
 
-Promise.map(' ' ,(berry) =>
+Promise.map(['berry/1', 'berry/2', 'berry/3', 'berry/4'], (berry) =>
             {
-                return Promise.all(['berry/1', 'berry/2', 'berry/3', 'berry/4'].map(poke.get));
+                return poke.get(berry);
             })
     .then(result =>
           {
               for(let iter = 0; iter < 4; iter++)
               {
-                  console.log(result[0][iter].data.name)
-                  console.log(result[0][iter].data.size)
+                  console.log(result[iter].data.name);
+                  console.log(result[iter].data.size);
               }
           });
